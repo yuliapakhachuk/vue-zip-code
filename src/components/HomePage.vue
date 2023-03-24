@@ -1,26 +1,21 @@
 <script setup>
-    import { ref } from "vue";
+    import { ref, watch } from "vue";
 
     const text = ref("");
-
+    const myhref = ref("/info/")
+    
     function onInput(e) {
         text.value = e.target.value;
     }
 
-    const emit = defineEmits(['submit'])
-
-    function handleSubmit() {
-        const code = text.value;
-        if (!code) { return };
-        
-        emit('submit', code);
-    }
+    watch(text, () => { 
+        myhref.value = "/info/" + text.value;
+    })
 
 </script>
 
 <template>
-    <form @submit.prevent ="handleSubmit">
-        <div class="input-group mb-3">
+    <div class="input-group mb-3">
         <input
             type="text"
             class="form-control"
@@ -31,13 +26,10 @@
             placeholder="Enter zip-code"
             required
         />
-        <button
-            class="btn btn-outline-primary"
-            type="submit"
-            id="button-addon2">
-            Render
-        </button>
-        </div>
-    </form>
+        <router-link v-bind:to="`${myhref}`" 
+            class="btn btn-primary">   
+            RENDER
+        </router-link>
+    </div>
 </template>
 
