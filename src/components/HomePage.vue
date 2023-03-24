@@ -2,28 +2,24 @@
     import { ref } from "vue";
 
     const text = ref("");
-    const region = ref({city: "fu", state: "fu"});
-    // const BASE_API = ""
-
-    const  emit = defineEmits("submit", region.value)
 
     function onInput(e) {
         text.value = e.target.value;
     }
 
-    async function search() {
-    const code = text.value;
-    if (!code) { return };
+    const emit = defineEmits(['submit'])
 
-    const res = await fetch(
-        `https://app.zipcodebase.com/api/v1/search?apikey=8e133fd0-c905-11ed-ab11-e7c81d1912fb&codes=${code}&country=us`
-    );
-    region.value = await res.json().then((data) => data.results[text.value][0]);
+    function handleSubmit() {
+        const code = text.value;
+        if (!code) { return };
+        
+        emit('submit', code);
     }
+
 </script>
 
 <template>
-    <form>
+    <form @submit.prevent ="handleSubmit">
         <div class="input-group mb-3">
         <input
             type="text"
@@ -38,13 +34,10 @@
         <button
             class="btn btn-outline-primary"
             type="submit"
-            id="button-addon2"
-            v-on:click="search"
-        >
+            id="button-addon2">
             Render
         </button>
         </div>
     </form>
 </template>
 
-<style lang="scss" scoped></style>

@@ -4,6 +4,13 @@
   import InfoCard from "./components/InfoCard.vue";
 
   let region = ref(null)
+  async function search(zipCode) {
+    const res = await fetch(
+        `https://app.zipcodebase.com/api/v1/search?apikey=8e133fd0-c905-11ed-ab11-e7c81d1912fb&codes=${zipCode}&country=us`
+    );
+    region.value = await res.json().then((data) => data.results[zipCode][0]);
+    }
+  
 </script>
 
 <template>
@@ -17,10 +24,7 @@
   </header>
 
   <main>
-    <HomePage @submit="responseValue => {
-      region = responseValue;
-
-      }" />
+    <HomePage @submit="search" />
     <InfoCard v-if="region" :rgn="region"/>
   </main>
 </template>
