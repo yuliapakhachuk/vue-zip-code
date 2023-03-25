@@ -6,17 +6,17 @@ import * as VueRouter from 'vue-router';
 
 const routes = [
     { 
-        path: '/vue-zip-code/', 
+        path: '/', 
         component: HomePage,
         name: "homepage"
     },
     { 
-        path: '/vue-zip-code/info/:code', 
+        path: '/info/:code', 
         component: InfoPage,
         name: "info"
     },
     { 
-        path: "/vue-zip-code/:catchAll(.*)", 
+        path: "/:catchAll(.*)", 
         component: ErrorPage,
     },
 
