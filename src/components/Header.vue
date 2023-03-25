@@ -15,7 +15,7 @@
         </div>
         <p class="navbar-text container-fluid"> 
             <b>User IP:</b> 
-            <small>{{ ` ${ip}` }}</small> 
+            <small>{{ ` ${ip || "Loading..."}` }}</small> 
         </p>
         <p class="navbar-text container-fluid"> 
             <b>User Agent Data:</b> 
