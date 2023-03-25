@@ -10,7 +10,7 @@
         <nav class="navbar navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">ZiP.co</a>
-            <span class="navbar-text">Welcome to zip-code finder</span>
+            <span class="navbar-text">Hello! Welcome to zip-code finder</span>
             
         </div>
         <p class="navbar-text container-fluid"> 
