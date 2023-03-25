@@ -2,6 +2,7 @@
   "name": "vue-zip-code",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://yuliapakhachuk.github.io/vue-zip-code/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
